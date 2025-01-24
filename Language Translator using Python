@@ -1,0 +1,124 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "4534fe4b-06ff-4291-a30c-ff47b56462b2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from tkinter import *\n",
+    "from tkinter import ttk\n",
+    "from googletrans import Translator, LANGUAGES\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "2945844c-f19e-4759-b2bb-8cd6379c05c9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "root = Tk()\n",
+    "root.geometry('1100x320')\n",
+    "root.resizable(0,0)\n",
+    "root['bg']='skyblue'\n",
+    "root.title('Language translator by Vaishnavi')\n",
+    "Label(root, text =\"Language Translator\", font =\"Arial 25 bold\").pack()\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "da56d549-cea3-422e-aa7e-eb6ed0a8dffd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Label(root,text = \"Enter text\", font='arial 13 bold', bg='White smoke').place(x=165, y=90)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "0377df13-bf30-41a4-a57d-8ec97be3e61f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "''"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "Input_text = Entry(root, width= 60)\n",
+    "Input_text.place(x=30,y =130)\n",
+    "Input_text.get()\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "07b98493-394c-4547-8092-4c52eac3e4d4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Label(root, text =\"Output\", font=' arial 13 bold', bg ='white smoke').place(x= 780, y= 90)\n",
+    "Output_text =Text (root, font='arial 10', height= 5, wrap= WORD, padx= 5, pady= 5, width= 50)\n",
+    "Output_text.place(x=600,y=130)\n",
+    "\n",
+    "language= list (LANGUAGES.values())\n",
+    "\n",
+    "dest_lang = ttk.Combobox(root, values =language, width= 22)\n",
+    "dest_lang.place(x=130, y=180)\n",
+    "dest_lang.set('choose language')\n",
+    "\n",
+    "\n",
+    "def Translate():\n",
+    "    translator=Translator()\n",
+    "    translated=translator.translate(text=Input_text.get(),dest=dest_lang.get())\n",
+    "    Output_text.delete(1.0,END)\n",
+    "    Output_text.insert(END,translated.text)\n",
+    "trans_btn=Button(root,text='Translate',font='arial 12 bold',pady=5,command=Translate,bg='orange',activebackground='green')\n",
+    "trans_btn.place(x=445,y=180)\n",
+    "              \n",
+    "root.mainloop()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "095b26dd-4e92-482d-92f9-2b48a0023564",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
